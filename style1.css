@@ -1,6 +1,6 @@
 body{
 	font-family: sans-serif;
-	background: #d5f0f3;
+	background: #973131 !important;
 }
  
 h1{
@@ -37,8 +37,8 @@ label{
 }
  
 .tombol_login{
-	background: #66bbbb;
-	color: white;
+	background: #973131;
+	color: #973131;
 	font-size: 11pt;
 	width: 100%;
 	border: none;

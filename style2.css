@@ -10,10 +10,10 @@ th, td {
     text-align: center;
 }
 table#t01 tr:nth-child(even) {
-    background-color: #eee;
+    background-color: #df2323a8;
 }
 table#t01 tr:nth-child(odd) {
-   background-color:#fff;
+   background-color:#af0505;
 }
 table#t01 th	{
     background-color: black;

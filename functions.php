@@ -20,7 +20,7 @@ $product_shuffle = $product->getData();
 // Cart object 
 $Cart = new Cart($db );
 
-$conn = mysqli_connect("localhost", "root", "", "shopee");
+$conn = mysqli_connect("localhost", "root", "", "olshop");
 function query($query){
 	global $conn;
 	$result = mysqli_query($conn, $query);

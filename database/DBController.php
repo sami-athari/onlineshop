@@ -1,18 +1,15 @@
 <?php
 
-
 class DBController
 {
-    // Database Connection Properties
+    // Properti Koneksi Database
     protected $host = 'localhost';
     protected $user = 'root';
     protected $password = '';
-    protected $database = "shopee";
-
-    // connection property
+    protected $database = "olshop"; 
     public $con = null;
 
-    // call constructor
+    // panggil konstruktor
     public function __construct()
     {
         $this->con = mysqli_connect($this->host, $this->user, $this->password, $this->database);
@@ -26,7 +23,7 @@ class DBController
         $this->closeConnection();
     }
 
-    // for mysqli closing connection
+    // untuk menutup koneksi mysqli
     protected function closeConnection(){
         if ($this->con != null ){
             $this->con->close();
