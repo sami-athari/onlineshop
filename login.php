@@ -8,8 +8,12 @@ if(isset($_POST["login"])){
 
 	$username = $_POST["username"];
 	$password = $_POST["password"];
+	
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+	$result = mysqli_query($conn, "SELECT * FROM user_admin WHERE username = '$username'");
+	if (!$result) {
+   		die("Query failed: " . mysqli_error($conn));
+	}
 
 	//cek username
 	if(mysqli_num_rows($result) === 1){
@@ -34,6 +38,13 @@ if(isset($_POST["login"])){
 	<link rel="stylesheet" type="text/css" href="style1.css">
 	<title>Halaman Login</title>
 </head>
+<style>
+     body {
+        background-color: baby blue !important;
+        
+    }
+
+</style>
 <body>
 
 <h1>Login</h1>

@@ -13,7 +13,7 @@ include ('headeruser.php');
     
         count($product->getData('wishlist')) ? include ('Template/_wishilist_template.php') :  include ('Template/notFound/_wishlist_notFound.php');
       
-
+        count($product->getData('transaksi')) ? include ('process_payment.php') :  include ('success.php');
 
   
         include ('Template/_new-phones.php');

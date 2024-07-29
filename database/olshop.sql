@@ -61,3 +61,4 @@ CREATE TABLE IF NOT EXISTS `wishlist` (
   `user_id` int NOT NULL,
   `item_id` int NOT NULL
 ) ;
+$sql = "INSERT INTO transaksi (nama_produk, harga, jumlah) VALUES ('$nama_produk', '$harga', '$jumlah')";

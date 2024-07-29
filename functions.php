@@ -9,7 +9,6 @@ require ('database/Product.php');
 // require Cart Class
 require ('database/Cart.php');
 
-
 // DBController object
 $db = new DBController();
 
@@ -33,12 +32,16 @@ function query($query){
 function registrasi($data){
 	global $conn;
 
-	$username =  strtolower(stripcslashes($data["username"]));
+	$first_name =  htmlspecialchars(($data["first_name"]));
+	$last_name = htmlspecialchars(($data["last_name"]));
+	$register_date = htmlspecialchars(($data["register_date"]));
+	$username = strtolower(stripcslashes($data["username"]));
 	$password = mysqli_real_escape_string($conn, $data["password"]);
+
 	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
 //LANGKAH KE 2 setelah bisa tambah ke database. cek username sudah ada atau belum
-	$result = mysqli_query($conn,"SELECT username FROM user WHERE username = '$username'");
+	$result = mysqli_query($conn,"SELECT username FROM user_admin WHERE username = '$username'");
 	if(mysqli_fetch_assoc($result)) {
 		echo "<script>
 		alert('username sudah terdaftar!')
@@ -58,9 +61,23 @@ function registrasi($data){
 	$password = password_hash($password, PASSWORD_DEFAULT);
 
 	//tambahkan user baru kedatabase
-	mysqli_query($conn, "INSERT INTO user VALUES('', 'first_name', 'last_name', 'register_date', '$username', '$password')");
+	mysqli_query($conn, "INSERT INTO user_admin VALUES('', 'first_name', 'last_name', 'register_date', '$username', '$password')");
 	return mysqli_affected_rows($conn);
 
+}
+function prosesTransaksi($subtotal) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO transaksi (jumlah_harga) VALUES (?)");
+    $stmt->bind_param("d", $subtotal);
+
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    } else {
+        echo "Error: " . $stmt->error;
+        $stmt->close();
+        return false;
+    }
 }
 
 
